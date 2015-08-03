@@ -1,3 +1,5 @@
+import sys
+
 from character import Character
 from monster import Dragon
 from monster import Goblin
@@ -38,6 +40,29 @@ class Game:
             print("{} is not attacking this turn.".format(self.monster))
 
     def player_turn(self):
+        player_choice = input("[A]ttack,[R]est,[Q]uit? ").lower()
+        if player_choice == 'a':
+            print("You're attacking []".format(self.monster))
+
+            if self.player.attack():
+                if self.monster.dodge():
+                    print("{} dodged your attack!".format(self.monster))  # ()?
+                else:
+                    if self.player.leveled_up():
+                        self.monster.hit_points -= 2
+                    else:
+                        self.monster.hit_points -= 1
+                    print("you hit {} with your {}".format(self.monster, self.player.weapon))
+            else:
+                print("You missed!")
+        elif player_choice == 'r':
+            self.player.rest()
+        elif player_choice == 'q'
+            sys.exit()
+        else:
+            self.player_turn()
+
+
 
     def cleanup(self):
 
