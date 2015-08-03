@@ -19,9 +19,9 @@ class Game:
 
     def get_next_monster(self):
         try:
-            return self.monster.pop(0)
+            return self.monsters.pop(0)
         except IndexError:
-            retrun None
+            return None
 
     def monster_turn(self):
         if self.monster.attack():
@@ -42,7 +42,7 @@ class Game:
     def player_turn(self):
         player_choice = input("[A]ttack,[R]est,[Q]uit? ").lower()
         if player_choice == 'a':
-            print("You're attacking []".format(self.monster))
+            print("You're attacking {}".format(self.monster))
 
             if self.player.attack():
                 if self.monster.dodge():
@@ -57,15 +57,15 @@ class Game:
                 print("You missed!")
         elif player_choice == 'r':
             self.player.rest()
-        elif player_choice == 'q'
+        elif player_choice == 'q':
             sys.exit()
         else:
             self.player_turn()
 
 
     def cleanup(self):
-        if self.monster.hit_points <= 0
-            self.experience += self.monster.experience
+        if self.monster.hit_points <= 0:
+            self.player.experience += self.monster.experience
             print("You killed {}!".format(self.monster))
             self.monster = self.get_next_monster()
 
@@ -77,8 +77,8 @@ class Game:
             print(self.player)
             self.monster_turn()
             print('-'*20)
-            self.player_turn
-            self.cleanup
+            self.player_turn()
+            self.cleanup()
             print('\n'+'='*20)
 
         if self.player.hit_points:

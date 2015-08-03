@@ -40,8 +40,8 @@ class Character(Combat):
         return '{}. HP: {}, XP: {}'.format(self.name, self.hit_points, self.experience)
 
     def rest(self):
-        if self.hit_points < self.base_hit_points
+        if self.hit_points < self.base_hit_points:
             self.hit_points += 1
 
-    def leveled_up():
-        retrun self.experience >= 5
+    def leveled_up(self):
+        return self.experience >= 5
