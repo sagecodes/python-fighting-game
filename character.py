@@ -1,4 +1,6 @@
-class Character:
+from combat import Combat
+
+class Character(Combat):
     experience = 0
     hit_points = 0
 
