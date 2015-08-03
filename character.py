@@ -4,7 +4,7 @@ from combat import Combat
 class Character(Combat):
     attack_limit = 10
     experience = 0
-    base_hit_points = 0
+    base_hit_points = 10
 
     def attack(self):
         roll = random.randint(1, self.attack_limit)
